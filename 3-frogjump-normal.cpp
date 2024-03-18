@@ -40,13 +40,18 @@ ll dynamic(vector<ll> &height, ll n)
 {
     vector<ll> dp(n);
     dp[n - 1] = 0;
-    dp[n - 2] = abs(height[n - 1] - height[n - 2]);
-    for (ll i = (n - 3); i >= 0; i--)
+    for (ll i = (n - 2); i >= 0; i--)
     {
-        ll t1 = abs(height[i] - height[i + 1]);
-        ll t2 = abs(height[i] - height[i + 2]);
-        ll x = min(t1 + dp[i + 1], t2 + dp[i + 2]);
-        dp[i] = x;
+        if (i == (n - 2))
+        {
+            dp[i] = abs(input[i] - input[n - 1]);
+        }
+        else
+        {
+            ll ans1 = abs(input[i] - input[i + 1]) + dp[i + 1];
+            ll ans2 = abs(input[i] - input[i + 2]) + dp[i + 2];
+            dp[i] = min(ans1, ans2);
+        }
     }
     return dp[0];
 }
