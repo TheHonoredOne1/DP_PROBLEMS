@@ -39,7 +39,7 @@ ll dynamic(vector<ll> &input, ll n)
     {
         vector<ll> dp(n);
         dp[n - 1] = input[n - 1];
-        dp[n - 2] = max(input[n - 1],input[n - .2]);
+        dp[n - 2] = max(input[n - 1],input[n - 2]);
         for (ll i = (n - 3); i >= 0; i--)
         {
             dp[i] = max(dp[i + 1], input[i] + dp[i + 2]);
